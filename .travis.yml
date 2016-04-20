@@ -2,7 +2,6 @@ language: javascript
 
 script:
   - ls
-  # - tests
 
 env:
   global:
