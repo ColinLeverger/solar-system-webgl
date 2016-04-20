@@ -1,11 +1,11 @@
 language: javascript
 
-script:
-  - ls
-
 env:
   global:
   - GH_REF: github.com/ColinLeverger/solar-system-webgl.git
+
+script:
+  - ls && echo "TODO : replace this line with something more sexy"
 
 after_success:
   - bash ./deploy.sh
