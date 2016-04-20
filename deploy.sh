@@ -3,7 +3,7 @@ mkdir dist
 mv index.html dist/
 mv img/ dist/
 mv libs/ dist/
-mv obj/ 
+mv obj/ dist/
 
 cd dist
 git init
