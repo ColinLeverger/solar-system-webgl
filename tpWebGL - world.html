@@ -9,7 +9,7 @@
 <script type="text/javascript" src="obj/triangle.js"></script>
 <script type="text/javascript" src="obj/square.js"></script>
 
-
+<!-- plusieurs texture ne change rien pour les shaders mais pour les lumières oui -->
 <script id="shader-fs" type="x-shader/x-fragment">
     precision mediump float;
 
@@ -211,9 +211,9 @@
 		  handleLoadedTexture(texture0)
 		}
 
-    texture0.image.src = "./img/moon.gif"; // note : croos origin problem with chrome outside webserver
-	texture0.image.src = "./img/earth.jpg"; // note : croos origin problem with chrome outside webserver
-  }
+		texture0.image.src = "./img/moon.gif"; // note : croos origin problem with chrome outside webserver
+		texture0.image.src = "./img/earth.jpg"; // note : croos origin problem with chrome outside webserver
+	}
 
 	function handleLoadedTexture(texture)
 	{
@@ -288,7 +288,10 @@
 		newObject = new sphere(rootObject);
 		objects.push(newObject);
 		newObject.translate([2,2,0]);
-		
+
+		newObject = new sphere(rootObject);
+		objects.push(newObject);
+		newObject.translate([5,5,0]);
 		
 		return rootObject;
 	}
@@ -443,7 +446,7 @@
 
 
 <body onload="webGLStart();">
-    <a href="http://learningwebgl.com/">&lt;&lt; Tutorial</a><br>
+    <!-- <a href="http://learningwebgl.com/">&lt;&lt; Tutorial</a><br> -->
 
 	<table border="0" width="100%">
 
@@ -470,9 +473,8 @@
 			</td>
 		</tr>
 
-</table>
+	</table>
     <br>
-    <a href="http://learningwebgl.com/">&lt;&lt; Tutorial</a><br>
 
 
 
