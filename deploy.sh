@@ -1,3 +1,11 @@
+mkdir dist
+
+mv index.html dist/
+mv img/ dist/
+mv libs/ dist/
+mv obj/ 
+
+cd dist
 git init
 
 # inside this git repo we'll pretend to be a new user
