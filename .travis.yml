@@ -1,3 +1,13 @@
 language: javascript
 
-script: ls
+env:
+  global:
+  - GH_REF: github.com/ColinLeverger/solar-system-webgl.git
+
+script: 
+  - mkdir dist
+  - mv * dist
+  - mv dist/deploy.sh deploy.sh
+
+after_success:
+  - bash ./deploy.sh
