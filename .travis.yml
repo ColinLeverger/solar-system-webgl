@@ -5,7 +5,8 @@ env:
   - GH_REF: github.com/ColinLeverger/solar-system-webgl.git
 
 script:
-  - ls && echo "TODO : replace this line with something more sexy"
+  - ls
+  - echo "Replace these two lines with something more usefull, like tests or something..."
 
 after_success:
   - bash ./deploy.sh
