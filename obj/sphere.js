@@ -1,16 +1,22 @@
+// Geometry
+var pasLat = 3;
+var pasLong = 6;
+var tetaMax = 360;
+var phiMax = 90;
+
 sphere.prototype = new worldObject;
-    function sphere(parent)
+    function sphere(parent, size)
     {
         this.base = worldObject;
         this.base(parent);
-        var buffers = this.initBuffers();
+        var buffers = this.initBuffers(size);
         this.vertexPositionBuffer = buffers[0];
         this.vertexTextureCoordBuffer = buffers[1];
         this.vertexIndexBuffer = buffers[2];
         //il manque surement quelque chose pour les normales ici
     }
 
-    sphere.prototype.initBuffers = function()
+    sphere.prototype.initBuffers = function(size)
     {    
         //il manque le code des normales à ajouter!
         vertices = [];
@@ -24,7 +30,7 @@ sphere.prototype = new worldObject;
         {
             for (var longi=0; longi <= tetaMax; longi+=pasLong)
             {
-                vertices = vertices.concat(pol2Cart(longi, lat)); //A
+                vertices = vertices.concat(pol2Cart(longi, lat, size)); //A
                 //il manque le code des normales à ajouter!
                 textureCoords = textureCoords.concat([longi/tetaMax, (90+lat)/(90+phiMax)]);
                 if(longi != tetaMax)
@@ -70,4 +76,13 @@ sphere.prototype = new worldObject;
         //il manque le code des normales à ajouter!
         
         return [vertexPositionBuffer, vertexTextureCoordBuffer, vertexIndexBuffer];
+    }
+
+
+    function pol2Cart(longi, lat, size) {
+        return [
+            size * Math.cos(degToRad(lat)) * Math.sin(degToRad(longi)),
+            size * Math.sin(degToRad(lat)),
+            size * Math.cos(degToRad(lat)) * Math.cos(degToRad(longi))
+        ];
     }
