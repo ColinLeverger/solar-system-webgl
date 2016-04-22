@@ -51,8 +51,6 @@ function handleLoadedTexture(texture) {
 }
 
 
-//INITGL
-
 function degToRad(degrees) {
     return degrees * Math.PI / 180;
 }
@@ -104,8 +102,6 @@ function initWorldObjects() {
     return rootObject;
 }
 
-var rTri = 0;
-var rSquare = 0;
 var rSphere = 0;
 var lastTime = 0;
 
@@ -114,9 +110,7 @@ function animate() {
     var elapsed = 0;
     if (lastTime != 0) {
         elapsed = timeNow - lastTime;
-
-        rTri += (90 * elapsed) / 1000.0;
-        rSquare += (75 * elapsed) / 1000.0;
+        
         rSphere += (50 * elapsed) / 1000.0;
     }
     rootObject.animate(elapsed);
