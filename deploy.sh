@@ -4,6 +4,7 @@ mv index.html dist/
 mv img/ dist/
 mv libs/ dist/
 mv obj/ dist/
+mv scripts/ dist/
 
 cd dist
 git init
