@@ -16,22 +16,22 @@ function worldObject(parent)
 worldObject.prototype.addChild = function(child)
 {
     this.children.push(child);
-}
+};
 
 worldObject.prototype.translate = function(translation)
 {
     mat4.translate(this.localTransformation, translation);
-}
+};
 
 worldObject.prototype.rotate = function(rotation, axis)
 {
     mat4.rotate(this.localTransformation, rotation, axis);
-}
+};
 
 worldObject.prototype.scale = function(scale)
 {
     mat4.scale(this.localTransformation, scale);
-}
+};
 
 worldObject.prototype.draw = function()
 {
@@ -74,7 +74,7 @@ worldObject.prototype.draw = function()
         }
         mvPopMatrix();
     }
-}
+};
 
 worldObject.prototype.animate = function(elapsedTime)
 {
@@ -84,4 +84,4 @@ worldObject.prototype.animate = function(elapsedTime)
         this.children[i].animate(elapsedTime);
     }
     this.rotate(0.001*elapsedTime,[0,1,0]); // cette ligne est surement discutable comme animation par défaut!
-}
+};

@@ -21,7 +21,7 @@ function square(parent)
         vertexPositionBuffer.itemSize = 3;
         vertexPositionBuffer.numItems = 6;
         return vertexPositionBuffer;
-    }
+    };
     square.prototype.initTextureCoordPositionBuffer = function()
     {
         var textureCoords = [
@@ -37,4 +37,4 @@ function square(parent)
         vertexTextureCoordBuffer.itemSize = 2;
         vertexTextureCoordBuffer.numItems = 6;
         return vertexTextureCoordBuffer;
-    }
+    };

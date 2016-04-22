@@ -71,4 +71,4 @@ grassBall.prototype= new worldObject;
         vertexTextureCoordBuffer.itemSize = 2;
         vertexTextureCoordBuffer.numItems = nbVertice;
         return [vertexPositionBuffer, vertexTextureCoordBuffer, vertexIndexBuffer];
-    }
+    };

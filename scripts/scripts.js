@@ -8,28 +8,36 @@ mat4.identity(userRotationMatrix);
 var sunTexture;
 var earthTexture;
 var moonTexture;
+var jupiterTexture;
 
 function initTexture() {
     sunTexture = gl.createTexture();
     sunTexture.image = new Image();
     sunTexture.image.onload = function () {
         handleLoadedTexture(sunTexture)
-    }
+    };
     sunTexture.image.src = "./img/sun.jpg"; // note : croos origin problem with chrome outside webserver
 
     earthTexture = gl.createTexture();
     earthTexture.image = new Image();
     earthTexture.image.onload = function () {
         handleLoadedTexture(earthTexture)
-    }
+    };
     earthTexture.image.src = "./img/earth.jpg";
 
     moonTexture = gl.createTexture();
     moonTexture.image = new Image();
     moonTexture.image.onload = function () {
         handleLoadedTexture(moonTexture)
-    }
+    };
     moonTexture.image.src = "./img/moon.gif";
+
+    jupiterTexture = gl.createTexture();
+    jupiterTexture.image = new Image();
+    jupiterTexture.image.onload = function () {
+        handleLoadedTexture(jupiterTexture)
+    };
+    jupiterTexture.image.src = "./img/jupiter.jpg";
 }
 
 function handleLoadedTexture(texture) {
@@ -50,14 +58,14 @@ function degToRad(degrees) {
 }
 
 var camX = 0;
-var camZ = -125;
+var camZ = -150;
 var camHeight = 0;
 
 function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 200.0, pMatrix);
+    mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 1000.0, pMatrix);
     mat4.identity(mvMatrix);
 
     mat4.rotate(mvMatrix, -camHeight, [1, 0, 0]);
@@ -87,6 +95,11 @@ function initWorldObjects() {
     moon.texture = moonTexture;
     objects.push(moon);
     moon.translate([0, 0, 5]);
+
+    var jupiter = new sphere(rootObject,5);
+    jupiter.texture = jupiterTexture;
+    objects.push(jupiter);
+    jupiter.translate([0, 0, 80]);
 
     return rootObject;
 }
@@ -121,7 +134,7 @@ function webGLStart() {
     var canvas = document.getElementById("lesson03-canvas");
 
     initGL(canvas);
-    initShaders()
+    initShaders();
     initTexture();
     rootObject = initWorldObjects();
 

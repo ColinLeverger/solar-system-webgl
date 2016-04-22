@@ -19,7 +19,7 @@ triangle.prototype.initVertexPositionBuffer = function()
     vertexPositionBuffer.itemSize = 3;
     vertexPositionBuffer.numItems = 3;
     return vertexPositionBuffer;
-}
+};
 triangle.prototype.initTextureCoordPositionBuffer = function()
 {
     var textureCoords = [
@@ -32,4 +32,4 @@ triangle.prototype.initTextureCoordPositionBuffer = function()
     vertexTextureCoordBuffer.itemSize = 2;
     vertexTextureCoordBuffer.numItems = 3;
     return vertexTextureCoordBuffer;
-}
+};

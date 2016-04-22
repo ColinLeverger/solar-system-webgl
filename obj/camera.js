@@ -19,7 +19,7 @@ camera.prototype.draw = function()
     {
         this.children[i].draw();
     }
-}
+};
 
 camera.prototype.animate = function(elapsedTime)
 {
@@ -28,4 +28,4 @@ camera.prototype.animate = function(elapsedTime)
     {
         this.children[i].animate();
     }
-}
+};

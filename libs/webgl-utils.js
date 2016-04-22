@@ -115,8 +115,7 @@ var setupWebGL = function(canvas, opt_attribs, opt_onError) {
       }
       container.innerHTML = makeFailHTML(str);
     }
-  };
-
+  }
   opt_onError = opt_onError || handleCreationError;
 
   if (canvas.addEventListener) {
@@ -151,7 +150,7 @@ var create3DContext = function(canvas, opt_attribs) {
     }
   }
   return context;
-}
+};
 
 return {
   create3DContext: create3DContext,

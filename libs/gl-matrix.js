@@ -166,7 +166,7 @@ return /******/ (function(modules) { // webpackBootstrap
      */
     glMatrix.setMatrixArrayType = function(type) {
         glMatrix.ARRAY_TYPE = type;
-    }
+    };
 
     var degree = Math.PI / 180;
 
@@ -177,7 +177,7 @@ return /******/ (function(modules) { // webpackBootstrap
     */
     glMatrix.toRadian = function(a){
          return a * degree;
-    }
+    };
 
     /**
      * Tests whether or not the arguments have approximately the same value, within an absolute
@@ -190,7 +190,7 @@ return /******/ (function(modules) { // webpackBootstrap
      */
     glMatrix.equals = function(a, b) {
         return Math.abs(a - b) <= glMatrix.EPSILON*Math.max(1.0, Math.abs(a), Math.abs(b));
-    }
+    };
 
     module.exports = glMatrix;
 
@@ -479,7 +479,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[2] = -s;
         out[3] = c;
         return out;
-    }
+    };
 
     /**
      * Creates a matrix from a vector scaling
@@ -498,7 +498,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[2] = 0;
         out[3] = v[1];
         return out;
-    }
+    };
 
     /**
      * Returns a string representation of a mat2
@@ -936,7 +936,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[4] = 0;
         out[5] = 0;
         return out;
-    }
+    };
 
     /**
      * Creates a matrix from a vector scaling
@@ -957,7 +957,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[4] = 0;
         out[5] = 0;
         return out;
-    }
+    };
 
     /**
      * Creates a matrix from a vector translation
@@ -978,7 +978,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[4] = v[0];
         out[5] = v[1];
         return out;
-    }
+    };
 
     /**
      * Returns a string representation of a mat2d
@@ -1546,7 +1546,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[7] = v[1];
         out[8] = 1;
         return out;
-    }
+    };
 
     /**
      * Creates a matrix from a given angle
@@ -1574,7 +1574,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[7] = 0;
         out[8] = 1;
         return out;
-    }
+    };
 
     /**
      * Creates a matrix from a vector scaling
@@ -1600,7 +1600,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[7] = 0;
         out[8] = 1;
         return out;
-    }
+    };
 
     /**
      * Copies the values from a mat2d into a mat3
@@ -2333,7 +2333,7 @@ return /******/ (function(modules) { // webpackBootstrap
       SIMD.Float32x4.store(out, 8,  SIMD.Float32x4.mul(det, minor2));
       SIMD.Float32x4.store(out, 12, SIMD.Float32x4.mul(det, minor3));
       return out;
-    }
+    };
 
     /**
      * Inverts a mat4 using SIMD if available and enabled
@@ -3115,7 +3115,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[14] = v[2];
         out[15] = 1;
         return out;
-    }
+    };
 
     /**
      * Creates a matrix from a vector scaling
@@ -3146,7 +3146,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[14] = 0;
         out[15] = 1;
         return out;
-    }
+    };
 
     /**
      * Creates a matrix from a given angle around a given axis
@@ -3194,7 +3194,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[14] = 0;
         out[15] = 1;
         return out;
-    }
+    };
 
     /**
      * Creates a matrix from the given angle around the X axis
@@ -3229,7 +3229,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[14] = 0;
         out[15] = 1;
         return out;
-    }
+    };
 
     /**
      * Creates a matrix from the given angle around the Y axis
@@ -3264,7 +3264,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[14] = 0;
         out[15] = 1;
         return out;
-    }
+    };
 
     /**
      * Creates a matrix from the given angle around the Z axis
@@ -3299,7 +3299,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[14] = 0;
         out[15] = 1;
         return out;
-    }
+    };
 
     /**
      * Creates a matrix from a quaternion rotation and vector translation
@@ -3685,7 +3685,7 @@ return /******/ (function(modules) { // webpackBootstrap
         out[14] = (far * near) / (near - far);
         out[15] = 0.0;
         return out;
-    }
+    };
 
     /**
      * Generates a orthogonal projection matrix with the given bounds
@@ -6606,4 +6606,3 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ }
 /******/ ])
 });
-;
