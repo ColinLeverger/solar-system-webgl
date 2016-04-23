@@ -29,27 +29,30 @@ var sun;
 function initWorldObjects() {
     sun = new sphere(null, 1);
     sun.texture = sunTexture;
-    sun.selfRotSpeed = 0.0001;
+    sun.selfRotationSpeed = 0.0001;
     objects.push(sun);
 
     var earth = new sphere(sun, 0.1);
     earth.texture = earthTexture;
     earth.rotationDirection = 1;
-    earth.selfRotSpeed = 0.01;
+    earth.rotationSpeed = 0.001;
+    earth.selfRotationSpeed = 0.01;
     objects.push(earth);
     earth.translate([0, 0, 4]);
 
     var moon = new sphere(earth, 0.05);
     moon.texture = moonTexture;
     moon.rotationDirection = 1;
-    moon.selfRotSpeed = 0.05;
+    moon.selfRotationSpeed = 0.05;
+    moon.rotationSpeed = 0.01;
     objects.push(moon);
     moon.translate([0, 0, 0.2]);
 
     var jupiter = new sphere(sun, 0.3);
     jupiter.texture = jupiterTexture;
     jupiter.rotationDirection = -1;
-    jupiter.selfRotSpeed = 0.0001;
+    jupiter.selfRotationSpeed = 0.0001;
+    jupiter.rotationSpeed = 0.0001;
     objects.push(jupiter);
     jupiter.translate([0, 0, 6]);
 

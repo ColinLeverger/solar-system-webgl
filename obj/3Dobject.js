@@ -15,8 +15,8 @@ function worldObject(parent) {
 
     // Specification of this object
     this.toggled = true;
-    this.rotSpeed = 0.001;
-    this.selfRotSpeed = 0.005;
+    this.rotationSpeed = 0.001;
+    this.selfRotationSpeed = 0.005;
     this.rotationDirection = 0;
     // il faudra sans doute ajouter des choses ici pour gérer les nomales
     this.texture = null;
@@ -93,6 +93,6 @@ worldObject.prototype.animate = function (elapsedTime) {
     for (var i = 0; i < this.children.length; i++) {
         this.children[i].animate(elapsedTime);
     }
-    this.orbitRotation(this.rotSpeed * elapsedTime, [0, this.rotationDirection, 0]);
-    this.selfRotate(this.selfRotSpeed * elapsedTime, [0, 1, 0]);
+    this.orbitRotation(this.rotationSpeed * elapsedTime, [0, this.rotationDirection, 0]);
+    this.selfRotate(this.selfRotationSpeed * elapsedTime, [0, 1, 0]);
 };
