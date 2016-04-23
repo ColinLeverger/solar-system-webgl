@@ -1,5 +1,9 @@
 language: javascript
 
+branches:
+  only:
+    - master
+
 env:
   global:
   - GH_REF: github.com/ColinLeverger/solar-system-webgl.git
