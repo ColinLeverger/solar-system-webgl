@@ -15,7 +15,7 @@ function sphere(parent, size) {
     //il manque surement quelque chose pour les normales ici
 }
 
-sphere.prototype.initBuffers = function (size) {
+sphere.prototype.initBuffers = function(size) {
     //il manque le code des normales à ajouter!
     vertices = [];
     textureCoords = [];

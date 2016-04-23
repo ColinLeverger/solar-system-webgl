@@ -19,40 +19,41 @@ function drawScene() {
 
     mat4.translate(mvMatrix, [camX, 0.0, camZ]);
 
-    rootObject.draw();
+    sun.draw();
 }
 
 // World
 var objects = [];
-var rootObject;
+var sun;
 
 function initWorldObjects() {
+    sun = new sphere(null, 1);
+    sun.texture = sunTexture;
+    sun.selfRotSpeed = 0.0001;
+    objects.push(sun);
 
-    rootObject = new sphere(null, 1);
-    rootObject.texture = sunTexture;
-    objects.push(rootObject);
-
-    var earth = new sphere(rootObject, 0.1);
+    var earth = new sphere(sun, 0.1);
     earth.texture = earthTexture;
-    earth.rotSpeed = 0.0005;
     earth.rotationDirection = 1;
+    earth.selfRotSpeed = 0.01;
     objects.push(earth);
     earth.translate([0, 0, 4]);
 
     var moon = new sphere(earth, 0.05);
     moon.texture = moonTexture;
     moon.rotationDirection = 1;
+    moon.selfRotSpeed = 0.05;
     objects.push(moon);
     moon.translate([0, 0, 0.2]);
 
-    var jupiter = new sphere(rootObject, 0.3);
+    var jupiter = new sphere(sun, 0.3);
     jupiter.texture = jupiterTexture;
-    jupiter.rotSpeed = 0.0002;
     jupiter.rotationDirection = -1;
+    jupiter.selfRotSpeed = 0.0001;
     objects.push(jupiter);
     jupiter.translate([0, 0, 6]);
 
-    return rootObject;
+    return sun;
 }
 
 var lastTime = 0;
@@ -63,7 +64,7 @@ function animate() {
     if (lastTime != 0) {
         elapsed = timeNow - lastTime;
     }
-    rootObject.animate(elapsed);
+    sun.animate(elapsed);
     lastTime = timeNow;
 }
 
@@ -80,7 +81,7 @@ function webGLStart() {
     initGL(canvas);
     initShaders();
     initTexture();
-    rootObject = initWorldObjects();
+    sun = initWorldObjects();
 
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);

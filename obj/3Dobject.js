@@ -94,5 +94,5 @@ worldObject.prototype.animate = function (elapsedTime) {
         this.children[i].animate(elapsedTime);
     }
     this.orbitRotation(this.rotSpeed * elapsedTime, [0, this.rotationDirection, 0]);
-    this.selfRotate(this.selfRotSpeed, [0, 1, 0]);
+    this.selfRotate(this.selfRotSpeed * elapsedTime, [0, 1, 0]);
 };
