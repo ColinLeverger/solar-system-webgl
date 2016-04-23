@@ -11,8 +11,8 @@ function initWorldObjects() {
     earth.rotationDirection = 1;
     earth.rotationSpeed = 0.001;
     earth.selfRotationSpeed = 0.0005;
-    earth.scale([0.1, 0.1, 0.1]);
-    earth.translate([0, 0, 30]);
+    earth.scale([0.3, 0.3, 0.3]);
+    earth.translate([0, 0, 15]);
 
     var moon = new sphere(earth);
     moon.texture = moonTexture;
@@ -28,7 +28,15 @@ function initWorldObjects() {
     jupiter.selfRotationSpeed = 0.0005;
     jupiter.rotationSpeed = 0.0001;
     jupiter.scale([0.5, 0.5, 0.5]);
-    jupiter.translate([0, 0, 10]);
+    jupiter.translate([0, 0, 30]);
+
+    var mars = new sphere(sun);
+    mars.texture = marsTexture;
+    mars.rotationDirection = 1;
+    mars.selfRotationSpeed = 0.0005;
+    mars.rotationSpeed = 0.0001;
+    mars.scale([0.2, 0.2, 0.2]);
+    mars.translate([0, 0, 50]);
 
     return sun;
 }

@@ -3,6 +3,7 @@ var sunTexture;
 var earthTexture;
 var moonTexture;
 var jupiterTexture;
+var marsTexture;
 
 function initTexture() {
     sunTexture = gl.createTexture();
@@ -32,6 +33,13 @@ function initTexture() {
         handleLoadedTexture(jupiterTexture)
     };
     jupiterTexture.image.src = "./img/jupiter.jpg";
+
+    marsTexture = gl.createTexture();
+    marsTexture.image = new Image();
+    marsTexture.image.onload = function () {
+        handleLoadedTexture(marsTexture)
+    };
+    marsTexture.image.src = "./img/mars.jpg";
 }
 
 function handleLoadedTexture(texture) {
