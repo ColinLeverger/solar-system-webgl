@@ -1,13 +1,26 @@
 function worldObject(parent) {
-    this.localTransformation = mat4.create();
+    // Matrices to do transformation on actual object
+    this.rotationTransformation = mat4.create();
+    this.translationTransformation = mat4.create();
+    this.selfRotationTransofmation = mat4.create();
+    mat4.identity(this.rotationTransformation);
+    mat4.identity(this.translationTransformation);
+    mat4.identity(this.selfRotationTransofmation);
+
+    // Array with children
     this.children = [];
     this.vertexPositionBuffer = null;
     this.vertexTextureCoordBuffer = null;
     this.vertexIndexBuffer = null;
+
+    // Specification of this object
     this.toggled = true;
+    this.rotSpeed = 0.001;
+    this.selfRotSpeed = 0.005;
+    this.rotationDirection = 0;
     // il faudra sans doute ajouter des choses ici pour gérer les nomales
     this.texture = null;
-    mat4.identity(this.localTransformation);
+
     if (parent != null) parent.addChild(this);
 }
 
@@ -16,15 +29,19 @@ worldObject.prototype.addChild = function (child) {
 };
 
 worldObject.prototype.translate = function (translation) {
-    mat4.translate(this.localTransformation, translation);
+    mat4.translate(this.translationTransformation, translation);
 };
 
-worldObject.prototype.rotate = function (rotation, axis) {
-    mat4.rotate(this.localTransformation, rotation, axis);
+worldObject.prototype.orbitRotation = function (rotation, axis) {
+    mat4.rotate(this.rotationTransformation, rotation, axis);
+};
+
+worldObject.prototype.selfRotate = function (rotation, axis) {
+    mat4.rotate(this.selfRotationTransofmation, rotation, axis);
 };
 
 worldObject.prototype.scale = function (scale) {
-    mat4.scale(this.localTransformation, scale);
+    mat4.scale(this.rotationTransformation, scale);
 };
 
 worldObject.prototype.draw = function () {
@@ -37,7 +54,12 @@ worldObject.prototype.draw = function () {
         }
 
         mvPushMatrix();
-        mat4.multiply(mvMatrix, this.localTransformation);
+        mat4.multiply(mvMatrix, this.rotationTransformation);
+        mat4.multiply(mvMatrix, this.translationTransformation);
+
+        mvPushMatrix();
+
+        mat4.multiply(mvMatrix, this.selfRotationTransofmation);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexPositionBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, this.vertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
@@ -56,7 +78,9 @@ worldObject.prototype.draw = function () {
             gl.drawElements(drawStyle, this.vertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
         }
 
-        //draws children
+        mvPopMatrix();
+
+        // draws children
         for (var i = 0; i < this.children.length; i++) {
             this.children[i].draw();
         }
@@ -69,6 +93,6 @@ worldObject.prototype.animate = function (elapsedTime) {
     for (var i = 0; i < this.children.length; i++) {
         this.children[i].animate(elapsedTime);
     }
-    this.rotate(0.001 * elapsedTime, [0, 1, 0]); // cette ligne est surement discutable comme animation par défaut!
-    // ajouter des pops et des pushs... TODO
+    this.orbitRotation(this.rotSpeed * elapsedTime, [0, this.rotationDirection, 0]);
+    this.selfRotate(this.selfRotSpeed, [0, 1, 0]);
 };

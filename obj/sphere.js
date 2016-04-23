@@ -72,6 +72,9 @@ sphere.prototype.initBuffers = function (size) {
     return [vertexPositionBuffer, vertexTextureCoordBuffer, vertexIndexBuffer];
 };
 
+function degToRad(degrees) {
+    return degrees * Math.PI / 180;
+}
 
 function pol2Cart(longi, lat, size) {
     return [
