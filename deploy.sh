@@ -1,6 +1,7 @@
+#!/usr/bin/env bash
 mkdir dist
 
-cp * dist/
+cp -R * dist/
 
 cd dist
 git init

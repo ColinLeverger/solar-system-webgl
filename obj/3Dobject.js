@@ -1,4 +1,3 @@
-//INITWORLD
 function worldObject(parent) {
     this.localTransformation = mat4.create();
     this.children = [];
