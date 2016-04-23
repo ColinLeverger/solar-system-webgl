@@ -15,6 +15,10 @@ function drawScene() {
     mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
     mat4.identity(mvMatrix);
 
+    gl.disable(gl.DEPTH_TEST);
+    myWorldBackground.draw();
+    gl.enable(gl.DEPTH_TEST);
+
     mat4.rotate(mvMatrix, -camHeight, [1, 0, 0]);
 
     mat4.translate(mvMatrix, [camX, 0.0, camZ]);
@@ -46,10 +50,13 @@ function webGLStart() {
 
     initGL(canvas);
     initShaders();
-    initTexture();
+    initTextures();
     sun = initWorldObjects();
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
+
+    //gl.disable(gl.DEPTH_TEST);
+    //myWorldBackground.draw();
     gl.enable(gl.DEPTH_TEST);
 
     // Interactions

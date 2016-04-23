@@ -1,5 +1,6 @@
 // World
 var sun;
+var myWorldBackground;
 
 function initWorldObjects() {
     sun = new sphere(null);
@@ -37,6 +38,9 @@ function initWorldObjects() {
     mars.rotationSpeed = 0.0001;
     mars.scale([0.2, 0.2, 0.2]);
     mars.translate([0, 0, 50]);
+
+    myWorldBackground = new sphere(null);
+    myWorldBackground.texture = worldTexture;
 
     return sun;
 }

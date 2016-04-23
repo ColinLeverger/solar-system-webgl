@@ -4,8 +4,9 @@ var earthTexture;
 var moonTexture;
 var jupiterTexture;
 var marsTexture;
+var worldTexture;
 
-function initTexture() {
+function initTextures() {
     sunTexture = gl.createTexture();
     sunTexture.image = new Image();
     sunTexture.image.onload = function () {
@@ -40,6 +41,13 @@ function initTexture() {
         handleLoadedTexture(marsTexture)
     };
     marsTexture.image.src = "./img/mars.jpg";
+
+    worldTexture = gl.createTexture();
+    worldTexture.image = new Image();
+    worldTexture.image.onload = function () {
+        handleLoadedTexture(worldTexture)
+    };
+    worldTexture.image.src = "./img/stars.jpg";
 }
 
 function handleLoadedTexture(texture) {
