@@ -56,14 +56,14 @@ function degToRad(degrees) {
 }
 
 var camX = 0;
-var camZ = -150;
+var camZ = -15;
 var camHeight = 0;
 
 function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 1000.0, pMatrix);
+    mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
     mat4.identity(mvMatrix);
 
     mat4.rotate(mvMatrix, -camHeight, [1, 0, 0]);
@@ -78,31 +78,29 @@ var objects = [];
 var rootObject;
 
 function initWorldObjects() {
-    var obj = 12;
 
-    rootObject = new sphere(null,10);
+    rootObject = new sphere(null, 1);
     rootObject.texture = sunTexture;
     objects.push(rootObject);
 
-    var earth = new sphere(rootObject,2);
+    var earth = new sphere(rootObject, 0.1);
     earth.texture = earthTexture;
     objects.push(earth);
-    earth.translate([0, 0, 40]);
+    earth.translate([0, 0, 4]);
 
-    var moon = new sphere(earth,1);
+    var moon = new sphere(earth, 0.05);
     moon.texture = moonTexture;
     objects.push(moon);
-    moon.translate([0, 0, 5]);
+    moon.translate([0, 0, 0.2]);
 
-    var jupiter = new sphere(rootObject,5);
+    var jupiter = new sphere(rootObject, 0.3);
     jupiter.texture = jupiterTexture;
     objects.push(jupiter);
-    jupiter.translate([0, 0, 80]);
+    jupiter.translate([0, 0, 6]);
 
     return rootObject;
 }
 
-var rSphere = 0;
 var lastTime = 0;
 
 function animate() {
@@ -110,8 +108,6 @@ function animate() {
     var elapsed = 0;
     if (lastTime != 0) {
         elapsed = timeNow - lastTime;
-        
-        rSphere += (50 * elapsed) / 1000.0;
     }
     rootObject.animate(elapsed);
     lastTime = timeNow;

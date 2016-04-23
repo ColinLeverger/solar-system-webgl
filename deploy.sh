@@ -1,10 +1,6 @@
 mkdir dist
 
-mv index.html dist/
-mv img/ dist/
-mv libs/ dist/
-mv obj/ dist/
-mv scripts/ dist/
+cp * dist/
 
 cd dist
 git init
