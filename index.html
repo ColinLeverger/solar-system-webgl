@@ -27,6 +27,7 @@
         vec4 textureColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
         gl_FragColor = vec4(textureColor.rgb * vLightWeighting, textureColor.a);
     }
+
     </script>
 
     <script id="shader-vs" type="x-shader/x-vertex">
@@ -63,6 +64,7 @@
             vLightWeighting = uAmbientColor + uPointLightingColor * directionalLightWeighting;
         }
     }
+
     </script>
 
 </head>
@@ -77,11 +79,12 @@
             <canvas id="lesson03-canvas" style="border: none;" width="1200px" height="700px"></canvas>
         </td>
         <td>
-            <input type="range" min="0" max="100" value="100" step="1" oninput="handleSlider1(this.value)"/>
+            Speed of rotation:
+            <input type="range" min="1" max="10" value="1" step="1" oninput="handleSlider1(this.value)"/>
             <br/>
-            <input type="checkbox" name="mesh" value="triangle" onclick='handleClick(this)' checked=true/>Triangle<br/>
-            <input type="checkbox" name="mesh" value="sphere" onclick='handleClick(this)' checked="true">Sphere<br/>
-            <input type="checkbox" name="mesh" value="square" onclick='handleClick(this)' checked=1/>Square<br/>
+            <input type="checkbox" name="mesh" value="lightOn" onclick='handleClick(this)' checked=true/>Light?<br/>
+            <input type="checkbox" name="mesh" value="earthOn" onclick='handleClick(this)' checked="true">Earth?<br/>
+            <input type="checkbox" name="mesh" value="randomOn" onclick='handleClick(this)' checked=1/>Random?<br/>
 
             <br/>
             Draw mode <select id="drawCombo" onChange="drawCombo(this)">

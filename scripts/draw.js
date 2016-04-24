@@ -32,8 +32,10 @@ var lastTime = 0;
 function animate() {
     var timeNow = new Date().getTime();
     var elapsed = 0;
-    if (lastTime != 0) {
-        elapsed = timeNow - lastTime;
+    if (isTurning) {
+        if (lastTime != 0) {
+            elapsed = speedOfRotation * (timeNow - lastTime);
+        }
     }
     sun.animate(elapsed);
     lastTime = timeNow;
@@ -56,8 +58,6 @@ function webGLStart() {
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
-    //gl.disable(gl.DEPTH_TEST);
-    //myWorldBackground.draw();
     gl.enable(gl.DEPTH_TEST);
 
     // Interactions

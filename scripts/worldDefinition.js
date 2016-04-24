@@ -1,12 +1,13 @@
 // World
 var sun;
+
 var myWorldBackground;
 
 function initWorldObjects() {
-    myWorldBackground = new sphere(null,1);
+    myWorldBackground = new sphere(null, 1);
     myWorldBackground.texture = worldTexture;
 
-    sun = new sphere(null,-1);
+    sun = new sphere(null, -1);
     sun.texture = sunTexture;
     sun.selfRotationSpeed = 0.0001;
 
@@ -17,7 +18,7 @@ function initWorldObjects() {
     earth.selfRotationSpeed = 0.0005;
     earth.translate([0, 0, 15]);
     earth.scale([0.3, 0.3, 0.3]);
-
+    
     var moon = new sphere(earth);
     moon.texture = moonTexture;
     moon.rotationDirection = 1;

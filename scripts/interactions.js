@@ -3,14 +3,15 @@ var lastMouseX = null;
 var lastMouseY = null;
 var currentZoom = 1;
 
-var toggleTriangle = true;
-var toggleSquare = true;
+var showEarth = true;
 var toggleSphere = true;
+var isTurning = true;
 
 function handleMouseDown(event) {
     mouseDown = true;
     lastMouseX = event.clientX;
     lastMouseY = event.clientY;
+    isTurning = !isTurning;
 }
 
 function handleMouseUp(event) {
@@ -81,21 +82,31 @@ function drawCombo(list) {
     drawStyle = list.selectedIndex;
 }
 
+var lightingOn = 1;
+
 function handleClick(checkMesh) {
     switch (checkMesh.value) {
-        case 'triangle':
-            toggleTriangle = checkMesh.checked;
+        case 'lightOn':
+            lightingOn = checkMesh.checked;
             break;
-        case 'square':
-            toggleSquare = checkMesh.checked;
+        case 'earthOn':
+            for (var i = 0; i < sun.children.length; i++) {
+                if (sun.children[i].texture == earthTexture) {
+                    sun.children[i].show = checkMesh.checked;
+                }
+            }
             break;
-        case 'sphere':
+        case 'randomOn':
             toggleSphere = checkMesh.checked;
             break;
         default:
     }
 }
 
+var speedOfRotation = 1;
+
 function handleSlider1(sliderValue) {
     //console.log(sliderValue);
+    speedOfRotation = sliderValue;
+    console.log(speedOfRotation)
 }

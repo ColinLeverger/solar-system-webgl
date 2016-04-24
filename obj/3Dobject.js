@@ -15,7 +15,7 @@ function worldObject(parent) {
     this.vertexNormalBuffer = null;
 
     // Specification of this object
-    this.toggled = true;
+    this.show = true;
     this.rotationSpeed = 0.001;
     this.selfRotationSpeed = 0.005;
     this.rotationDirection = 0;
@@ -45,7 +45,7 @@ worldObject.prototype.scale = function (scale) {
 };
 
 worldObject.prototype.draw = function () {
-    if (this.toggled) {
+    if (this.show) {
         if (this.texture != null) {
             // gl.activeTexture(this.texture.getbind());
             gl.activeTexture(gl.TEXTURE0);
@@ -70,11 +70,9 @@ worldObject.prototype.draw = function () {
         gl.bindBuffer(gl.ARRAY_BUFFER, vertexNormalBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, this.vertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-        // TODO : toggle lighting with Js checkbox
-        var lighting = 1;
-        gl.uniform1i(shaderProgram.useLightingUniform, lighting); // declarer dans le shader useLightingUniform
+        gl.uniform1i(shaderProgram.useLightingUniform, lightingOn);
 
-        if (lighting) {
+        if (lightingOn) {
             gl.uniform3f(
                 shaderProgram.ambientColorUniform,
                 0.5,
@@ -111,7 +109,9 @@ worldObject.prototype.draw = function () {
 
         // Draws children
         for (var i = 0; i < this.children.length; i++) {
-            this.children[i].draw();
+            if (this.children[i].show) {
+                this.children[i].draw();
+            }
         }
         mvPopMatrix();
     }
