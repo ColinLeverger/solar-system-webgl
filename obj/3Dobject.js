@@ -19,7 +19,6 @@ function worldObject(parent) {
     this.rotationSpeed = 0.001;
     this.selfRotationSpeed = 0.005;
     this.rotationDirection = 0;
-    // il faudra sans doute ajouter des choses ici pour gérer les nomales
     this.texture = null;
 
     if (parent != null) parent.addChild(this);
@@ -73,7 +72,7 @@ worldObject.prototype.draw = function () {
 
         // TODO : toggle lighting with Js checkbox
         var lighting = 1;
-        gl.uniform1i(shaderProgram.useLightingUniform, lighting); // déclarer dans le shader useLightingUniform
+        gl.uniform1i(shaderProgram.useLightingUniform, lighting); // declarer dans le shader useLightingUniform
 
         if (lighting) {
             gl.uniform3f(
@@ -84,12 +83,12 @@ worldObject.prototype.draw = function () {
             );
 
             // FIXME
-            // Light should not moove with camera !
+            // Light should not move with camera !
             gl.uniform3f(
                 shaderProgram.pointLightingLocationUniform,
                 0,
                 0,
-                -15
+                -30
             );
 
             gl.uniform3f(

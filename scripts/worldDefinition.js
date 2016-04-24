@@ -3,11 +3,14 @@ var sun;
 var myWorldBackground;
 
 function initWorldObjects() {
-    sun = new sphere(null);
+    myWorldBackground = new sphere(null,-1);
+    myWorldBackground.texture = worldTexture;
+
+    sun = new sphere(null,-1);
     sun.texture = sunTexture;
     sun.selfRotationSpeed = 0.0001;
 
-    var earth = new sphere(sun, normalDirection = -1);
+    var earth = new sphere(sun);
     earth.texture = earthTexture;
     earth.rotationDirection = 1;
     earth.rotationSpeed = 0.001;
@@ -15,7 +18,7 @@ function initWorldObjects() {
     earth.translate([0, 0, 15]);
     earth.scale([0.3, 0.3, 0.3]);
 
-    var moon = new sphere(earth, normalDirection = 1);
+    var moon = new sphere(earth);
     moon.texture = moonTexture;
     moon.rotationDirection = 1;
     moon.selfRotationSpeed = 0.005;
@@ -23,7 +26,7 @@ function initWorldObjects() {
     moon.translate([0, 0, 7]);
     moon.scale([0.3, 0.3, 0.3]);
 
-    var jupiter = new sphere(sun, normalDirection = 1);
+    var jupiter = new sphere(sun);
     jupiter.texture = jupiterTexture;
     jupiter.rotationDirection = -1;
     jupiter.selfRotationSpeed = 0.0005;
@@ -31,16 +34,13 @@ function initWorldObjects() {
     jupiter.translate([0, 0, 30]);
     jupiter.scale([0.5, 0.5, 0.5]);
 
-    var mars = new sphere(sun, normalDirection = 1);
+    var mars = new sphere(sun);
     mars.texture = marsTexture;
     mars.rotationDirection = 1;
     mars.selfRotationSpeed = 0.0005;
     mars.rotationSpeed = 0.0001;
     mars.translate([0, 0, 50]);
     mars.scale([0.2, 0.2, 0.2]);
-
-    myWorldBackground = new sphere(null, normalDirection = 1);
-    myWorldBackground.texture = worldTexture;
 
     return sun;
 }

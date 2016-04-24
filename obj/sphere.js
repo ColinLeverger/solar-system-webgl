@@ -6,6 +6,9 @@ var phiMax = 90;
 
 sphere.prototype = new worldObject;
 function sphere(parent, normalDirection) {
+    if (typeof normalDirection == "undefined") {
+        normalDirection = 1;
+    }
     this.base = worldObject;
     this.base(parent);
     var buffers = this.initBuffers(normalDirection);
