@@ -68,10 +68,40 @@ worldObject.prototype.draw = function () {
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexTextureCoordBuffer);
         gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, this.vertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexNormalBuffer);
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertexNormalBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, this.vertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
+        var lighting = 1;
+        gl.uniform1i(shaderProgram.useLightingUniform, lighting); // déclarer dans le shader useLightingUniform
+
+        if (lighting) {
+            gl.uniform3f(
+                shaderProgram.ambientColorUniform, // déclarer dans le shader
+                parseFloat(0.5),
+                parseFloat(0.5),
+                parseFloat(0.5)
+            );
+            var lightingDirection = [
+                parseFloat(0.7),
+                parseFloat(0.5),
+                parseFloat(0.2)
+            ];
+
+            var adjustedLD = vec3.create();
+            vec3.normalize(lightingDirection, adjustedLD);
+            vec3.scale(adjustedLD, -1);
+            gl.uniform3fv(shaderProgram.lightingDirectionUniform, adjustedLD);
+
+            gl.uniform3f(
+                shaderProgram.directionalColorUniform, // déclarer dans le shader
+                parseFloat(0.8),
+                parseFloat(0.6),
+                parseFloat(0.2)
+            );
+        }
+
         setMatrixUniforms();
+
         if (this.vertexIndexBuffer == null) {
             gl.drawArrays(drawStyle, 0, this.vertexPositionBuffer.numItems);
         }
