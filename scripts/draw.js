@@ -15,6 +15,7 @@ function drawScene() {
     mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
     mat4.identity(mvMatrix);
 
+    // Skybox
     gl.disable(gl.DEPTH_TEST);
     myWorldBackground.draw();
     gl.enable(gl.DEPTH_TEST);

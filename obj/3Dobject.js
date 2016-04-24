@@ -71,32 +71,32 @@ worldObject.prototype.draw = function () {
         gl.bindBuffer(gl.ARRAY_BUFFER, vertexNormalBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, this.vertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
+        // TODO : toggle lighting with Js checkbox
         var lighting = 1;
         gl.uniform1i(shaderProgram.useLightingUniform, lighting); // déclarer dans le shader useLightingUniform
 
         if (lighting) {
             gl.uniform3f(
-                shaderProgram.ambientColorUniform, // déclarer dans le shader
-                parseFloat(0.5),
-                parseFloat(0.5),
-                parseFloat(0.5)
+                shaderProgram.ambientColorUniform,
+                0.5,
+                0.5,
+                0.5
             );
-            var lightingDirection = [
-                parseFloat(0.7),
-                parseFloat(0.5),
-                parseFloat(0.2)
-            ];
 
-            var adjustedLD = vec3.create();
-            vec3.normalize(lightingDirection, adjustedLD);
-            vec3.scale(adjustedLD, -1);
-            gl.uniform3fv(shaderProgram.lightingDirectionUniform, adjustedLD);
+            // FIXME
+            // Light should not moove with camera !
+            gl.uniform3f(
+                shaderProgram.pointLightingLocationUniform,
+                0,
+                0,
+                -15
+            );
 
             gl.uniform3f(
-                shaderProgram.directionalColorUniform, // déclarer dans le shader
-                parseFloat(0.8),
-                parseFloat(0.6),
-                parseFloat(0.2)
+                shaderProgram.pointLightingColorUniform,
+                0.5,
+                0.5,
+                0.5
             );
         }
 
@@ -112,13 +112,14 @@ worldObject.prototype.draw = function () {
 
         mvPopMatrix();
 
-        // draws children
+        // Draws children
         for (var i = 0; i < this.children.length; i++) {
             this.children[i].draw();
         }
         mvPopMatrix();
     }
-};
+}
+;
 
 worldObject.prototype.animate = function (elapsedTime) {
     //animate children
