@@ -29,7 +29,7 @@ sphere.prototype.initBuffers = function (normalDirection) {
     var resLongi = tetaMax / pasLong + 1;
     for (var lat = -90; lat <= phiMax; lat += pasLat) {
         for (var longi = 0; longi <= tetaMax; longi += pasLong) {
-            vertices = vertices.concat(pol2Cart(longi, lat, 1));
+            vertices = vertices.concat(pol2Cart(longi, lat, normalDirection));
             normalData = normalData.concat(pol2Cart(longi, lat, normalDirection));
             textureCoords = textureCoords.concat([longi / tetaMax, (90 + lat) / (90 + phiMax)]);
             if (longi != tetaMax) {

@@ -3,7 +3,7 @@ var sun;
 var myWorldBackground;
 
 function initWorldObjects() {
-    myWorldBackground = new sphere(null,-1);
+    myWorldBackground = new sphere(null,1);
     myWorldBackground.texture = worldTexture;
 
     sun = new sphere(null,-1);

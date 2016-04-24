@@ -82,13 +82,11 @@ worldObject.prototype.draw = function () {
                 0.5
             );
 
-            // FIXME
-            // Light should not move with camera !
             gl.uniform3f(
                 shaderProgram.pointLightingLocationUniform,
+                camX,
                 0,
-                0,
-                -30
+                -camHeight + camZ
             );
 
             gl.uniform3f(
