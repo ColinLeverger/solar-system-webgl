@@ -48,23 +48,35 @@ function handleKeyDown(event) {
     //console.log(event.keyCode);
     event.preventDefault();
     switch (event.keyCode) {
-        case 37: //left
-            camX++;
+        case 37: // left
+            camera.x++;
             break;
-        case 39: //right
-            camX--;
+        case 39: // right
+            camera.x--;
             break;
-        case 38: //down
-            camZ++;
+        case 38: // down
+            camera.z++;
             break;
-        case 40: //forward
-            camZ--;
+        case 40: // forward
+            camera.z--;
             break;
-        case 33: //pageUp
-            camHeight += degToRad(1);
+        case 33: // pageUp
+            camera.height += degToRad(1);
             break;
-        case 34: //pageDown
-            camHeight -= degToRad(1);
+        case 34: // pageDown
+            camera.height -= degToRad(1);
+            break;
+        case 35: // end / right
+            camera.direction += degToRad(1);
+            break;
+        case 36: // home / left
+            camera.direction -= degToRad(1);
+            break;
+        case 32: // " "
+            camera.y--;
+            break;
+        case 67: // c
+            camera.y++;
             break;
         case 116:
             window.location.reload();

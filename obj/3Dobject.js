@@ -91,9 +91,12 @@ worldObject.prototype.draw = function () {
 
             gl.uniform3f(
                 shaderProgram.pointLightingLocationUniform,
-                camX,
-                0,
-                -camHeight + camZ
+                camera.x,
+                camera.y,
+                -camera.height + camera.z
+/*                mvMatrix[12],
+                mvMatrix[13],
+                mvMatrix[14]*/
             );
 
             gl.uniform3f(

@@ -4,9 +4,7 @@ var drawStyle;
 var userRotationMatrix = mat4.create();
 mat4.identity(userRotationMatrix);
 
-var camX = 0;
-var camZ = -30;
-var camHeight = 0;
+var camera;
 
 function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
@@ -15,9 +13,9 @@ function drawScene() {
     mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
     mat4.identity(mvMatrix);
 
-    if (!mouseControl) {
-        mat4.rotate(mvMatrix, -camHeight, [1, 0, 0]);
-    } else {
+    mat4.rotate(mvMatrix, camera.height, [1, 0, 0]);
+    mat4.rotate(mvMatrix, camera.direction, [0, 1, 0]);
+    if (mouseControl) {
         mat4.multiply(mvMatrix, userRotationMatrix);
     }
 
@@ -26,7 +24,7 @@ function drawScene() {
     myWorldBackground.draw();
     gl.enable(gl.DEPTH_TEST);
 
-    mat4.translate(mvMatrix, [camX, 0.0, camZ]);
+    mat4.translate(mvMatrix, [camera.x, camera.y, camera.z]);
 
     sun.draw();
 }
@@ -52,17 +50,18 @@ function tick() {
 }
 
 function webGLStart() {
-
+    camera = camera(null, 0, 0, -30);
+    console.log(camera);
     var canvas = document.getElementById("lesson03-canvas");
 
     initGL(canvas);
     initShaders();
     initTextures();
+
     sun = initWorldObjects();
 
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
-    gl.enable(gl.DEPTH_TEST);
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
     // Interactions
     canvas.onmousedown = handleMouseDown;

@@ -1,10 +1,13 @@
 camera.prototype = new worldObject;
-function camera(parent) {
+function camera(parent,x,y,z) {
     this.base = worldObject;
-    this.base(parent);
-    this.x = 0;
-    this.z = 0;
+    this.parent = parent;
+    this.x = x;
+    this.y = y;
+    this.z = z;
     this.height = 0;
+    this.direction = 0;
+    return this;
 }
 
 camera.prototype.draw = function () {
