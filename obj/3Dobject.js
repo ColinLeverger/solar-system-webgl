@@ -73,25 +73,34 @@ worldObject.prototype.draw = function () {
         gl.uniform1i(shaderProgram.useLightingUniform, lightingOn);
 
         if (lightingOn) {
-            gl.uniform3f(
-                shaderProgram.ambientColorUniform,
-                0.5,
-                0.5,
-                0.5
-            );
+            if (ambiantLightOn) {
+                gl.uniform3f(
+                    shaderProgram.ambientColorUniform,
+                    0.5,
+                    0.5,
+                    0.5
+                );
+            } else {
+                gl.uniform3f(
+                    shaderProgram.ambientColorUniform,
+                    0,
+                    0,
+                    0
+                );
+            }
 
             gl.uniform3f(
                 shaderProgram.pointLightingLocationUniform,
                 camX,
-                0,
+                mvMatrix[13],
                 -camHeight + camZ
             );
 
             gl.uniform3f(
                 shaderProgram.pointLightingColorUniform,
-                0.5,
-                0.5,
-                0.5
+                1,
+                1,
+                1
             );
         }
 

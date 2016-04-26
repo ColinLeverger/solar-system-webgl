@@ -28,6 +28,7 @@
         gl_FragColor = vec4(textureColor.rgb * vLightWeighting, textureColor.a);
     }
 
+
     </script>
 
     <script id="shader-vs" type="x-shader/x-vertex">
@@ -65,6 +66,8 @@
         }
     }
 
+
+
     </script>
 
 </head>
@@ -82,9 +85,11 @@
             Speed of rotation:
             <input type="range" min="1" max="10" value="1" step="1" oninput="handleSlider1(this.value)"/>
             <br/>
-            <input type="checkbox" name="mesh" value="lightOn" onclick='handleClick(this)' checked=true/>Light?<br/>
+            <input type="checkbox" name="mesh" value="lightOn" onclick='handleClick(this)' checked="true">Light?<br/>
+            <input type="checkbox" name="mesh" value="ambiantLightOn" onclick='handleClick(this)' checked="true">Ambiant
+            Light?<br/>
             <input type="checkbox" name="mesh" value="earthOn" onclick='handleClick(this)' checked="true">Earth?<br/>
-            <input type="checkbox" name="mesh" value="randomOn" onclick='handleClick(this)' checked=1/>Random?<br/>
+            <input type="checkbox" name="mesh" value="randomOn" onclick='handleClick(this)' checked="true">Random?<br/>
 
             <br/>
             Draw mode <select id="drawCombo" onChange="drawCombo(this)">

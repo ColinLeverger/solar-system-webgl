@@ -3,7 +3,6 @@ var lastMouseX = null;
 var lastMouseY = null;
 var currentZoom = 1;
 
-var showEarth = true;
 var toggleSphere = true;
 var isTurning = true;
 
@@ -82,7 +81,8 @@ function drawCombo(list) {
     drawStyle = list.selectedIndex;
 }
 
-var lightingOn = 1;
+var lightingOn = true;
+var ambiantLightOn = true;
 
 function handleClick(checkMesh) {
     switch (checkMesh.value) {
@@ -96,6 +96,9 @@ function handleClick(checkMesh) {
                 }
             }
             break;
+        case 'ambiantLightOn':
+            ambiantLightOn = checkMesh.checked;
+            break;
         case 'randomOn':
             toggleSphere = checkMesh.checked;
             break;
@@ -106,7 +109,5 @@ function handleClick(checkMesh) {
 var speedOfRotation = 1;
 
 function handleSlider1(sliderValue) {
-    //console.log(sliderValue);
     speedOfRotation = sliderValue;
-    console.log(speedOfRotation)
 }
