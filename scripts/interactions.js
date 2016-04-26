@@ -4,13 +4,11 @@ var lastMouseY = null;
 var currentZoom = 1;
 
 var toggleSphere = true;
-var isTurning = true;
 
 function handleMouseDown(event) {
     mouseDown = true;
     lastMouseX = event.clientX;
     lastMouseY = event.clientY;
-    isTurning = !isTurning;
 }
 
 function handleMouseUp(event) {
@@ -21,22 +19,24 @@ function handleMouseMove(event) {
     if (!mouseDown) {
         return;
     }
-    var newX = event.clientX;
-    var newY = event.clientY;
+    if (mouseControl) {
+        var newX = event.clientX;
+        var newY = event.clientY;
 
-    var newRotationMatrix = mat4.create();
-    mat4.identity(newRotationMatrix);
+        var newRotationMatrix = mat4.create();
+        mat4.identity(newRotationMatrix);
 
-    var deltaX = newX - lastMouseX;
-    mat4.rotate(newRotationMatrix, degToRad(deltaX / 7), [0, 1, 0]);
+        var deltaX = newX - lastMouseX;
+        mat4.rotate(newRotationMatrix, degToRad(deltaX / 7), [0, 1, 0]);
 
-    var deltaY = newY - lastMouseY;
-    mat4.rotate(newRotationMatrix, degToRad(deltaY / 7), [1, 0, 0]);
+        var deltaY = newY - lastMouseY;
+        mat4.rotate(newRotationMatrix, degToRad(deltaY / 7), [1, 0, 0]);
 
-    mat4.multiply(newRotationMatrix, userRotationMatrix, userRotationMatrix);
+        mat4.multiply(newRotationMatrix, userRotationMatrix, userRotationMatrix);
 
-    lastMouseX = newX;
-    lastMouseY = newY;
+        lastMouseX = newX;
+        lastMouseY = newY;
+    }
 }
 
 function handleWheel(event) {
@@ -73,7 +73,7 @@ function handleKeyDown(event) {
             window.location.reload();
             break;
         default:
-
+            break;
     }
 }
 
@@ -83,11 +83,17 @@ function drawCombo(list) {
 
 var lightingOn = true;
 var ambiantLightOn = true;
+var isTurning = true;
+var mouseControl = true;
 
 function handleClick(checkMesh) {
     switch (checkMesh.value) {
         case 'lightOn':
             lightingOn = checkMesh.checked;
+            document.getElementById("ambiantLight").checked = checkMesh.checked;
+            break;
+        case 'ambiantLightOn':
+            ambiantLightOn = checkMesh.checked;
             break;
         case 'earthOn':
             for (var i = 0; i < sun.children.length; i++) {
@@ -96,11 +102,11 @@ function handleClick(checkMesh) {
                 }
             }
             break;
-        case 'ambiantLightOn':
-            ambiantLightOn = checkMesh.checked;
+        case 'isTurning':
+            isTurning = checkMesh.checked;
             break;
-        case 'randomOn':
-            toggleSphere = checkMesh.checked;
+        case 'mouseControl':
+            mouseControl = checkMesh.checked;
             break;
         default:
     }

@@ -15,7 +15,11 @@ function drawScene() {
     mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
     mat4.identity(mvMatrix);
 
-    mat4.rotate(mvMatrix, -camHeight, [1, 0, 0]);
+    if (!mouseControl) {
+        mat4.rotate(mvMatrix, -camHeight, [1, 0, 0]);
+    } else {
+        mat4.multiply(mvMatrix, userRotationMatrix);
+    }
 
     // Skybox
     gl.disable(gl.DEPTH_TEST);

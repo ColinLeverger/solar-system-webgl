@@ -29,9 +29,9 @@ function initWorldObjects() {
 
     var jupiter = new sphere(sun);
     jupiter.texture = jupiterTexture;
-    jupiter.rotationDirection = -1;
+    jupiter.rotationDirection = 1;
     jupiter.selfRotationSpeed = 0.0005;
-    jupiter.rotationSpeed = 0.0001;
+    jupiter.rotationSpeed = 0.00001;
     jupiter.translate([0, 0, 30]);
     jupiter.scale([0.5, 0.5, 0.5]);
 

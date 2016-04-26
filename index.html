@@ -27,8 +27,6 @@
         vec4 textureColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
         gl_FragColor = vec4(textureColor.rgb * vLightWeighting, textureColor.a);
     }
-
-
     </script>
 
     <script id="shader-vs" type="x-shader/x-vertex">
@@ -65,9 +63,6 @@
             vLightWeighting = uAmbientColor + uPointLightingColor * directionalLightWeighting;
         }
     }
-
-
-
     </script>
 
 </head>
@@ -85,12 +80,16 @@
             Speed of rotation:
             <input type="range" min="1" max="10" value="1" step="1" oninput="handleSlider1(this.value)"/>
             <br/>
+            <input type="checkbox" name="mesh" value="isTurning" onclick='handleClick(this)' checked="true">Stop
+            rotation?<br/>
             <input type="checkbox" name="mesh" value="lightOn" onclick='handleClick(this)' checked="true">Light?<br/>
-            <input type="checkbox" name="mesh" value="ambiantLightOn" onclick='handleClick(this)' checked="true">Ambiant
+            <input type="checkbox" id="ambiantLight" name="mesh" value="ambiantLightOn" onclick='handleClick(this)'
+                   checked="true">Ambiant
             Light?<br/>
             <input type="checkbox" name="mesh" value="earthOn" onclick='handleClick(this)' checked="true">Earth?<br/>
-            <input type="checkbox" name="mesh" value="randomOn" onclick='handleClick(this)' checked="true">Random?<br/>
-
+            <input type="checkbox" name="mesh" value="mouseControl" onclick='handleClick(this)'
+                   checked="true">Mouse?<br/>
+            <input type="checkbox" name="mesh" value="random" onclick='handleClick(this)' checked="false">test?<br/>
             <br/>
             Draw mode <select id="drawCombo" onChange="drawCombo(this)">
             <option id="option1">POINTS</option>
