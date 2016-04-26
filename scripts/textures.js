@@ -5,6 +5,7 @@ var moonTexture;
 var jupiterTexture;
 var marsTexture;
 var worldTexture;
+var asteroidTexture;
 
 function initTextures() {
     sunTexture = gl.createTexture();
@@ -13,6 +14,13 @@ function initTextures() {
         handleLoadedTexture(sunTexture)
     };
     sunTexture.image.src = "./img/sun.jpg";
+
+    asteroidTexture = gl.createTexture();
+    asteroidTexture.image = new Image();
+    asteroidTexture.image.onload = function () {
+        handleLoadedTexture(asteroidTexture)
+    };
+    asteroidTexture.image.src = "./img/asteroid.jpg";
 
     earthTexture = gl.createTexture();
     earthTexture.image = new Image();
