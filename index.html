@@ -28,6 +28,7 @@
         vec4 textureColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
         gl_FragColor = vec4(textureColor.rgb * vLightWeighting, textureColor.a);
     }
+
     </script>
 
     <script id="shader-vs" type="x-shader/x-vertex">
@@ -64,6 +65,7 @@
             vLightWeighting = uAmbientColor + uPointLightingColor * directionalLightWeighting;
         }
     }
+
     </script>
 
 </head>
@@ -81,15 +83,17 @@
             Speed of rotation:
             <input type="range" min="1" max="10" value="1" step="1" oninput="handleSlider1(this.value)"/>
             <br/>
-            <input type="checkbox" name="mesh" value="isTurning" onclick='handleClick(this)' checked="true">Stop
+            <input type="checkbox" name="mesh" value="isTurning" onclick='handleClick(this)' checked>Stop
             rotation?<br/>
-            <input type="checkbox" name="mesh" value="lightOn" onclick='handleClick(this)' checked="true">Light?<br/>
+            <input type="checkbox" name="mesh" value="lightOn" onclick='handleClick(this)' checked>Light?<br/>
             <input type="checkbox" id="ambiantLight" name="mesh" value="ambiantLightOn" onclick='handleClick(this)'
-                   checked="true">Ambiant
+                   checked>Ambiant
             Light?<br/>
-            <input type="checkbox" name="mesh" value="earthOn" onclick='handleClick(this)' checked="true">Earth?<br/>
-            <input type="checkbox" name="mesh" value="mouseControl" onclick='handleClick(this)'
-                   checked="true">Mouse?<br/>
+            <input type="checkbox" name="mesh" value="earthOn" onclick='handleClick(this)' checked>Earth?<br/>
+            <input type="checkbox" name="mesh" value="mouseControl" onclick='handleClick(this)'>Mouse?<br/>
+            <input type="checkbox" id ="camera1" name="mesh" value="camera1" onclick='handleClick(this)' checked>camera1?<br/>
+            <input type="checkbox" id ="camera2" name="mesh" value="camera2" onclick='handleClick(this)'>camera2?<br/>
+            <input type="checkbox" id ="camera3" name="mesh" value="camera3" onclick='handleClick(this)'>camera3?<br/>
             <input type="checkbox" name="mesh" value="random" onclick='handleClick(this)' checked="false">test?<br/>
             <br/>
             Draw mode <select id="drawCombo" onChange="drawCombo(this)">

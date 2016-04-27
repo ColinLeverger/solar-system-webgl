@@ -96,7 +96,7 @@ function drawCombo(list) {
 var lightingOn = true;
 var ambiantLightOn = true;
 var isTurning = true;
-var mouseControl = true;
+var mouseControl = false;
 
 function handleClick(checkMesh) {
     switch (checkMesh.value) {
@@ -119,6 +119,21 @@ function handleClick(checkMesh) {
             break;
         case 'mouseControl':
             mouseControl = checkMesh.checked;
+            break;
+        case 'camera1':
+            camera = camera1;
+            document.getElementById("camera2").checked = false;
+            document.getElementById("camera3").checked = false;
+            break;
+        case 'camera2':
+            camera = camera2;
+            document.getElementById("camera1").checked = false;
+            document.getElementById("camera3").checked = false;
+            break;
+        case 'camera3':
+            camera = camera3;
+            document.getElementById("camera1").checked = false;
+            document.getElementById("camera2").checked = false;
             break;
         default:
     }

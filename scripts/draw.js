@@ -5,6 +5,9 @@ var userRotationMatrix = mat4.create();
 mat4.identity(userRotationMatrix);
 
 var camera;
+var camera1;
+var camera2;
+var camera3;
 
 function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
@@ -50,7 +53,12 @@ function tick() {
 }
 
 function webGLStart() {
-    camera = camera(null, 0, 0, -30);
+    camera1 = new camera(null, 0, 0, -30, 0, 0);
+    camera2 = new camera(null, 0, 0, +30, 180, 0);
+    camera3 = new camera(null, 0, 10, 0, 0, -90);
+
+    camera = camera1;
+
     var canvas = document.getElementById("lesson03-canvas");
 
     initGL(canvas);
