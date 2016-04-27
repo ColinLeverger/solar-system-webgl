@@ -83,6 +83,10 @@ function degToRad(degrees) {
     return degrees * Math.PI / 180;
 }
 
+function radToDeg(rad) {
+    return 180 * rad / Math.PI;
+}
+
 function pol2Cart(longi, lat, normalDirection) {
     return [
         normalDirection * Math.cos(degToRad(lat)) * Math.sin(degToRad(longi)),

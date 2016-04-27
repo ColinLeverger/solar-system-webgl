@@ -51,7 +51,6 @@ function tick() {
 
 function webGLStart() {
     camera = camera(null, 0, 0, -30);
-    console.log(camera);
     var canvas = document.getElementById("lesson03-canvas");
 
     initGL(canvas);

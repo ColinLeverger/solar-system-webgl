@@ -9,6 +9,7 @@ function initWorldObjects() {
 
     sun = new sphere(null, -1);
     sun.texture = sunTexture;
+    sun.lightSource = true;
     sun.selfRotationSpeed = 0.0001;
 
     var earth = new sphere(sun);

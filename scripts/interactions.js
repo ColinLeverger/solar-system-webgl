@@ -49,22 +49,22 @@ function handleKeyDown(event) {
     event.preventDefault();
     switch (event.keyCode) {
         case 37: // left
-            camera.x++;
+            camera.x = camera.x + 1;
             break;
         case 39: // right
-            camera.x--;
+            camera.x = camera.x - 1;
             break;
         case 38: // down
-            camera.z++;
+            camera.z = camera.z + 1;
             break;
         case 40: // forward
-            camera.z--;
+            camera.z = camera.z - 1;
             break;
         case 33: // pageUp
-            camera.height += degToRad(1);
+            camera.height -= degToRad(1);
             break;
         case 34: // pageDown
-            camera.height -= degToRad(1);
+            camera.height += degToRad(1);
             break;
         case 35: // end / right
             camera.direction += degToRad(1);
@@ -73,10 +73,10 @@ function handleKeyDown(event) {
             camera.direction -= degToRad(1);
             break;
         case 32: // " "
-            camera.y--;
+            camera.y = camera.y - 1;
             break;
         case 67: // c
-            camera.y++;
+            camera.y = camera.y + 1;
             break;
         case 116:
             window.location.reload();

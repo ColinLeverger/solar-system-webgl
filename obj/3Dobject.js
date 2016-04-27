@@ -16,6 +16,7 @@ function worldObject(parent) {
 
     // Specification of this object
     this.show = true;
+    this.lightSource = false;
     this.rotationSpeed = 0.001;
     this.selfRotationSpeed = 0.005;
     this.rotationDirection = 0;
@@ -72,7 +73,7 @@ worldObject.prototype.draw = function () {
 
         gl.uniform1i(shaderProgram.useLightingUniform, lightingOn);
 
-        if (lightingOn) {
+        if (lightingOn && this.lightSource) {
             if (ambiantLightOn) {
                 gl.uniform3f(
                     shaderProgram.ambientColorUniform,
@@ -91,12 +92,9 @@ worldObject.prototype.draw = function () {
 
             gl.uniform3f(
                 shaderProgram.pointLightingLocationUniform,
-                camera.x,
-                camera.y,
-                -camera.height + camera.z
-/*                mvMatrix[12],
+                mvMatrix[12],
                 mvMatrix[13],
-                mvMatrix[14]*/
+                mvMatrix[14]
             );
 
             gl.uniform3f(
