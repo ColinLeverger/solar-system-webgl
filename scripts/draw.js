@@ -16,18 +16,7 @@ function drawScene() {
     mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
     mat4.identity(mvMatrix);
 
-    mat4.rotate(mvMatrix, camera.height, [1, 0, 0]);
-    mat4.rotate(mvMatrix, camera.direction, [0, 1, 0]);
-    if (mouseControl) {
-        mat4.multiply(mvMatrix, userRotationMatrix);
-    }
-
-    // Skybox
-    gl.disable(gl.DEPTH_TEST);
-    myWorldBackground.draw();
-    gl.enable(gl.DEPTH_TEST);
-
-    mat4.translate(mvMatrix, [camera.x, camera.y, camera.z]);
+    camera.update();
 
     sun.draw();
 }
@@ -53,11 +42,7 @@ function tick() {
 }
 
 function webGLStart() {
-    camera1 = new camera(null, 0, 0, -30, 0, 0);
-    camera2 = new camera(null, 0, 0, +30, 180, 0);
-    camera3 = new camera(null, 0, 10, 0, 0, -90);
-
-    camera = camera1;
+    camera = initCameras();
 
     var canvas = document.getElementById("lesson03-canvas");
 
@@ -66,7 +51,6 @@ function webGLStart() {
     initTextures();
 
     sun = initWorldObjects();
-
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
@@ -78,5 +62,13 @@ function webGLStart() {
     window.addEventListener("keydown", handleKeyDown, false);
     drawStyle = gl.TRIANGLES;
     tick();
+}
+
+function initCameras() {
+    camera1 = new camera(null, 0, 0, -30, 0, 0);
+    camera2 = new camera(null, 0, 0, +30, 180, 0);
+    camera3 = new camera(null, 0, 30, 0, 0, -90);
+
+    return camera1;
 }
 

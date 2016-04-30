@@ -47,19 +47,44 @@ function handleWheel(event) {
 function handleKeyDown(event) {
     //console.log(event.keyCode);
     event.preventDefault();
+    // TODO: DRY !
+    if (camera.canMove) {
+        switch (event.keyCode) {
+            case 37: // left
+                camera.x = camera.x + 1;
+                camera.direction = 0;
+                camera.height = 0;
+                break;
+            case 39: // right
+                camera.x = camera.x - 1;
+                camera.direction = 0;
+                camera.height = 0;
+                break;
+            case 38: // up
+                camera.z = camera.z + 1;
+                camera.direction = 0;
+                camera.height = 0;
+                break;
+            case 40: // down
+                camera.z = camera.z - 1;
+                camera.direction = 0;
+                camera.height = 0;
+                break;
+            case 32: // " "
+                camera.y = camera.y - 1;
+                camera.direction = 0;
+                camera.height = 0;
+                break;
+            case 67: // c
+                camera.y = camera.y + 1;
+                camera.direction = 0;
+                camera.height = 0;
+                break;
+            default:
+                break;
+        }
+    }
     switch (event.keyCode) {
-        case 37: // left
-            camera.x = camera.x + 1;
-            break;
-        case 39: // right
-            camera.x = camera.x - 1;
-            break;
-        case 38: // down
-            camera.z = camera.z + 1;
-            break;
-        case 40: // forward
-            camera.z = camera.z - 1;
-            break;
         case 33: // pageUp
             camera.height -= degToRad(1);
             break;
@@ -72,21 +97,16 @@ function handleKeyDown(event) {
         case 36: // home / left
             camera.direction -= degToRad(1);
             break;
-        case 32: // " "
-            camera.y = camera.y - 1;
-            break;
-        case 67: // c
-            camera.y = camera.y + 1;
-            break;
-        case 116:
+        case 116: // r
             window.location.reload();
             break;
-        case 82:
+        case 82:  // f5
             window.location.reload();
             break;
         default:
             break;
     }
+    console.log(camera);
 }
 
 function drawCombo(list) {
@@ -122,16 +142,19 @@ function handleClick(checkMesh) {
             break;
         case 'camera1':
             camera = camera1;
+            camera.canMove = true;
             document.getElementById("camera2").checked = false;
             document.getElementById("camera3").checked = false;
             break;
         case 'camera2':
             camera = camera2;
+            camera.canMove = false;
             document.getElementById("camera1").checked = false;
             document.getElementById("camera3").checked = false;
             break;
         case 'camera3':
             camera = camera3;
+            camera.canMove = false;
             document.getElementById("camera1").checked = false;
             document.getElementById("camera2").checked = false;
             break;
