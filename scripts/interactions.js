@@ -45,40 +45,37 @@ function handleWheel(event) {
 }
 
 function handleKeyDown(event) {
-    //console.log(event.keyCode);
     event.preventDefault();
-    // TODO: DRY !
+    function reinitCameraOrientation() {
+        camera.direction = 0;
+        camera.height = 0;
+    }
+
     if (camera.canMove) {
         switch (event.keyCode) {
             case 37: // left
                 camera.x = camera.x + 1;
-                camera.direction = 0;
-                camera.height = 0;
+                reinitCameraOrientation();
                 break;
             case 39: // right
                 camera.x = camera.x - 1;
-                camera.direction = 0;
-                camera.height = 0;
+                reinitCameraOrientation();
                 break;
             case 38: // up
                 camera.z = camera.z + 1;
-                camera.direction = 0;
-                camera.height = 0;
+                reinitCameraOrientation();
                 break;
             case 40: // down
                 camera.z = camera.z - 1;
-                camera.direction = 0;
-                camera.height = 0;
+                reinitCameraOrientation();
                 break;
             case 32: // " "
                 camera.y = camera.y - 1;
-                camera.direction = 0;
-                camera.height = 0;
+                reinitCameraOrientation();
                 break;
             case 67: // c
                 camera.y = camera.y + 1;
-                camera.direction = 0;
-                camera.height = 0;
+                reinitCameraOrientation();
                 break;
             default:
                 break;
@@ -106,7 +103,6 @@ function handleKeyDown(event) {
         default:
             break;
     }
-    console.log(camera);
 }
 
 function drawCombo(list) {
