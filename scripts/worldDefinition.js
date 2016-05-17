@@ -2,7 +2,7 @@ var sun;
 var myWorldBackground; //skybox
 
 // Description of the solar system
-// Caution: EACH object MUST have a parent (at least the sun) or it won't be displayed in the UI !
+// Caution: EACH object (exept the sun) MUST have a parent (at least the sun) or it won't be displayed in the UI !
 function initWorldObjects() {
     myWorldBackground = new sphere(null, 1);
     myWorldBackground.texture = worldTexture;
