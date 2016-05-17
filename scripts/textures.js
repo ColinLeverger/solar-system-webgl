@@ -1,4 +1,4 @@
-// Textures
+// Load every texture into a specific variable
 var sunTexture;
 var earthTexture;
 var moonTexture;
@@ -6,6 +6,7 @@ var jupiterTexture;
 var marsTexture;
 var worldTexture;
 
+// Load and initialise the texture for each known objects
 function initTextures() {
     sunTexture = gl.createTexture();
     sunTexture.image = new Image();

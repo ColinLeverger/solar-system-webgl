@@ -1,16 +1,17 @@
-// Geometry
-var pasLat = 3;
-var pasLong = 6;
-var tetaMax = 360;
-var phiMax = 90;
+// =============
+// SPHERE OBJECT 
+// =============
 
 sphere.prototype = new worldObject;
+
+// Constructor
 function sphere(parent, normalDirection) {
     if (typeof normalDirection == "undefined") {
         normalDirection = 1;
     }
     this.base = worldObject;
     this.base(parent);
+    
     var buffers = this.initBuffers(normalDirection);
     this.vertexPositionBuffer = buffers[0];
     this.vertexTextureCoordBuffer = buffers[1];
@@ -22,6 +23,13 @@ sphere.prototype.initBuffers = function (normalDirection) {
     vertices = [];
     textureCoords = [];
     normalData = [];
+
+    // Geometry
+    var pasLat = 3;
+    var pasLong = 6;
+    var tetaMax = 360;
+    var phiMax = 90;
+    
     var nbVertice = 0;
     var sphereVertexIndices = [];
     var nbTriangles = 0;

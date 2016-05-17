@@ -1,4 +1,9 @@
+// =============
+// CAMERA OBJECT
+// =============
+
 camera.prototype = new worldObject;
+// Constructor
 function camera(parent, x, y, z, direction, height) {
     this.base = worldObject;
     this.parent = parent;
@@ -11,6 +16,7 @@ function camera(parent, x, y, z, direction, height) {
     return this;
 }
 
+// When moving the camera
 camera.prototype.update = function () {
     mat4.rotate(mvMatrix, this.height, [1, 0, 0]);
     mat4.rotate(mvMatrix, this.direction, [0, 1, 0]);

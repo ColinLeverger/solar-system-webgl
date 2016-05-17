@@ -1,3 +1,8 @@
+// =====================================================================================
+// WORLD OBJECT - Cmmon parent for all the objects that can be added to the solar system
+// =====================================================================================
+
+// Constructor
 function worldObject(parent) {
     // Matrices to do transformation on actual object
     this.rotationTransformation = mat4.create();
@@ -9,20 +14,24 @@ function worldObject(parent) {
 
     // Array with children
     this.children = [];
+    
     this.vertexPositionBuffer = null;
     this.vertexTextureCoordBuffer = null;
     this.vertexIndexBuffer = null;
     this.vertexNormalBuffer = null;
 
-    // Specification of this object
-    this.show = true;
+    this.show = true; // Indicates whether this object has to be displayed in the UI
+    
+    // Default parameters 
     this.lightSource = false;
     this.rotationSpeed = 0.001;
     this.selfRotationSpeed = 0.005;
     this.rotationDirection = 0;
     this.texture = null;
 
-    if (parent != null) parent.addChild(this);
+    if (parent != null) {
+        parent.addChild(this);
+    } 
 }
 
 worldObject.prototype.addChild = function (child) {
@@ -45,10 +54,10 @@ worldObject.prototype.scale = function (scale) {
     mat4.scale(this.rotationTransformation, scale);
 };
 
+// Global indications to draw an object
 worldObject.prototype.draw = function () {
     if (this.show) {
         if (this.texture != null) {
-            // gl.activeTexture(this.texture.getbind());
             gl.activeTexture(gl.TEXTURE0);
             gl.bindTexture(gl.TEXTURE_2D, this.texture);
             gl.uniform1i(shaderProgram.samplerUniform, this.texture.bindNumber);

@@ -44,7 +44,7 @@ function tick() {
 function webGLStart() {
     camera = initCameras();
 
-    var canvas = document.getElementById("lesson03-canvas");
+    var canvas = document.getElementById("solarsystem-canvas");
 
     initGL(canvas);
     initShaders();

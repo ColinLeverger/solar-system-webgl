@@ -75,26 +75,27 @@
 
     <tr>
         <td style="width:1200px">
-            <canvas id="lesson03-canvas" style="border: none;" width="1200px" height="700px"></canvas>
+            <canvas id="solarsystem-canvas" style="border: none;" width="1200px" height="700px"></canvas>
         </td>
         <td>
             Speed of rotation:
             <input type="range" min="1" max="10" value="1" step="1" oninput="handleSlider1(this.value)"/>
             <br/>
+
             <input type="checkbox" name="mesh" value="isTurning" onclick='handleClick(this)' checked>Stop
             rotation?<br/>
+
             <input type="checkbox" name="mesh" value="lightOn" onclick='handleClick(this)' checked>Light?<br/>
             <input type="checkbox" id="ambiantLight" name="mesh" value="ambiantLightOn" onclick='handleClick(this)'
                    checked>Ambiant
             Light?<br/>
-            <input type="checkbox" name="mesh" value="earthOn" onclick='handleClick(this)' checked>Earth?<br/>
-            <input type="checkbox" name="mesh" value="mouseControl" onclick='handleClick(this)'>Mouse?<br/>
-            <input type="checkbox" id ="camera1" name="mesh" value="camera1" onclick='handleClick(this)' checked>camera1?<br/>
-            <input type="checkbox" id ="camera2" name="mesh" value="camera2" onclick='handleClick(this)'>Static camera2?<br/>
-            <input type="checkbox" id ="camera3" name="mesh" value="camera3" onclick='handleClick(this)'>Static camera3?<br/>
-            <input type="checkbox" name="mesh" value="random" onclick='handleClick(this)' checked="false">test?<br/>
-            <br/>
-            Draw mode <select id="drawCombo" onChange="drawCombo(this)">
+            <input type="checkbox" name="mesh" value="earthOn" onclick='handleClick(this)' checked>Display the earth?<br/>
+            <input type="checkbox" name="mesh" value="mouseControl" onclick='handleClick(this)'>Allow mouse interaction with the camera?<br/>
+            <input type="radio" id ="camera1" name="mesh" value="camera1" onclick='handleClick(this)' checked>Static camera 1<br/>
+            <input type="radio" id ="camera2" name="mesh" value="camera2" onclick='handleClick(this)'>Static camera 2<br/>
+            <input type="radio" id ="camera3" name="mesh" value="camera3" onclick='handleClick(this)'>Static camera 3<br/>
+            <br/><br/>
+            Web GL draw mode <select id="drawCombo" onChange="drawCombo(this)">
             <option id="option1">POINTS</option>
             <option id="option2">LINES</option>
             <option id="option3">LINE_LOOP</option>
