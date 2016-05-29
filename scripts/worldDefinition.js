@@ -13,7 +13,7 @@ function initWorldObjects() {
     sun.selfRotationSpeed = 0.0001;
     sun.scale([3, 3, 3]);
 
-    // // ---------------------------------------- MERCURE
+    // ---------------------------------------- MERCURE
     var mercure = new sphere(sun);
     mercure.texture = mercureTexture;
     mercure.rotationDirection = 1;
@@ -22,7 +22,7 @@ function initWorldObjects() {
     mercure.translate([0, 0, 8]); // Distance au soleil
     mercure.scale([0.2, 0.2, 0.2]); // Taille
 
-    // // ---------------------------------------- VENUS
+    // ---------------------------------------- VENUS
     var venus = new sphere(sun);
     venus.texture = venusTexture;
     venus.rotationDirection = 1;
@@ -31,7 +31,7 @@ function initWorldObjects() {
     venus.translate([0, 0, 10]);
     venus.scale([0.3, 0.3, 0.3]);
 
-    // // ---------------------------------------- EARTH
+    // ---------------------------------------- EARTH
     var earth = new sphere(sun);
     earth.texture = earthTexture;
     earth.rotationDirection = 1;
@@ -48,7 +48,7 @@ function initWorldObjects() {
     moon.translate([0, 0, 11]);
     moon.scale([0.15, 0.15, 0.15]);
 
-    // // ---------------------------------------- MARS
+    // ---------------------------------------- MARS
     var mars = new sphere(sun);
     mars.texture = marsTexture;
     mars.rotationDirection = 1;
@@ -57,7 +57,7 @@ function initWorldObjects() {
     mars.translate([0, 0, 13]);
     mars.scale([0.2, 0.2, 0.2]);
 
-    // // // ---------------------------------------- JUPITER
+    // ---------------------------------------- JUPITER
     var jupiter = new sphere(sun);
     jupiter.texture = jupiterTexture;
     jupiter.rotationDirection = 1;
@@ -74,15 +74,6 @@ function initWorldObjects() {
     saturne.rotationSpeed = 0.0001;
     saturne.translate([0, 0, 13]);
     saturne.scale([0.5, 0.5, 0.5]);
-
-    // ---------------------------------------- URANUS
-    var uranus = new sphere(sun);
-    uranus.texture = uranusTexture;
-    uranus.rotationDirection = 1;
-    uranus.selfRotationSpeed = 0.0007;
-    uranus.rotationSpeed = 0.00008;
-    uranus.translate([0, 0, 15]);
-    uranus.scale([0.6, 0.6, 0.6]);
 
     return sun;
 }

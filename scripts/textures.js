@@ -7,8 +7,6 @@ var marsTexture;
 var worldTexture;
 var mercureTexture;
 var venusTexture;
-var uranusTexture;
-var neptuneTexture;
 var saturneTexture;
 
 // Load and initialise the texture for each known objects
@@ -32,7 +30,7 @@ function initTextures() {
     moonTexture.image.onload = function () {
         handleLoadedTexture(moonTexture)
     };
-    moonTexture.image.src = "./img/moon.gif";
+    moonTexture.image.src = "./img/moon.jpg";
 
     saturneTexture = gl.createTexture();
     saturneTexture.image = new Image();
@@ -68,20 +66,6 @@ function initTextures() {
         handleLoadedTexture(venusTexture)
     };
     venusTexture.image.src = "./img/venus.jpg";
-
-    uranusTexture = gl.createTexture();
-    uranusTexture.image = new Image();
-    uranusTexture.image.onload = function () {
-        handleLoadedTexture(uranusTexture)
-    };
-    uranusTexture.image.src = "./img/uranus.jpg";
-
-    neptuneTexture = gl.createTexture();
-    neptuneTexture.image = new Image();
-    neptuneTexture.image.onload = function () {
-        handleLoadedTexture(neptuneTexture)
-    };
-    neptuneTexture.image.src = "./img/neptune.jpg";
 
     worldTexture = gl.createTexture();
     worldTexture.image = new Image();
