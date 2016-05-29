@@ -27,6 +27,7 @@
         gl_FragColor = vec4(textureColor.rgb * vLightWeighting, textureColor.a);
     }
 
+
     </script>
 
     <script id="shader-vs" type="x-shader/x-vertex">
@@ -64,6 +65,7 @@
         }
     }
 
+
     </script>
 
 </head>
@@ -89,11 +91,16 @@
             <input type="checkbox" id="ambiantLight" name="mesh" value="ambiantLightOn" onclick='handleClick(this)'
                    checked>Ambiant
             Light?<br/>
-            <input type="checkbox" name="mesh" value="earthOn" onclick='handleClick(this)' checked>Display the earth?<br/>
-            <input type="checkbox" name="mesh" value="mouseControl" onclick='handleClick(this)'>Allow mouse interaction with the camera?<br/>
-            <input type="radio" id ="camera1" name="mesh" value="camera1" onclick='handleClick(this)' checked>Static camera 1<br/>
-            <input type="radio" id ="camera2" name="mesh" value="camera2" onclick='handleClick(this)'>Static camera 2<br/>
-            <input type="radio" id ="camera3" name="mesh" value="camera3" onclick='handleClick(this)'>Static camera 3<br/>
+            <input type="checkbox" name="mesh" value="earthOn" onclick='handleClick(this)' checked>Display the
+            earth?<br/>
+            <input type="checkbox" name="mesh" value="mouseControl" onclick='handleClick(this)'>Allow mouse interaction
+            with the camera?<br/>
+            <input type="radio" id="camera1" name="mesh" value="camera1" onclick='handleClick(this)' checked>Static
+            camera 1<br/>
+            <input type="radio" id="camera2" name="mesh" value="camera2" onclick='handleClick(this)'>Static camera
+            2<br/>
+            <input type="radio" id="camera3" name="mesh" value="camera3" onclick='handleClick(this)'>Static camera
+            3<br/>
             <br/><br/>
             Web GL draw mode <select id="drawCombo" onChange="drawCombo(this)">
             <option id="option1">POINTS</option>

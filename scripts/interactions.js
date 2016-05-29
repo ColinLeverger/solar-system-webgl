@@ -16,24 +16,24 @@ function handleMouseUp(event) {
 }
 
 function handleMouseMove(event) {
-    if (!mouseDown) {
+    if ( !mouseDown ) {
         return;
     }
-    if (mouseControl) {
+    if ( mouseControl ) {
         var newX = event.clientX;
         var newY = event.clientY;
-
+        
         var newRotationMatrix = mat4.create();
         mat4.identity(newRotationMatrix);
-
+        
         var deltaX = newX - lastMouseX;
-        mat4.rotate(newRotationMatrix, degToRad(deltaX / 7), [0, 1, 0]);
-
+        mat4.rotate(newRotationMatrix, degToRad(deltaX / 7), [ 0, 1, 0 ]);
+        
         var deltaY = newY - lastMouseY;
-        mat4.rotate(newRotationMatrix, degToRad(deltaY / 7), [1, 0, 0]);
-
+        mat4.rotate(newRotationMatrix, degToRad(deltaY / 7), [ 1, 0, 0 ]);
+        
         mat4.multiply(newRotationMatrix, userRotationMatrix, userRotationMatrix);
-
+        
         lastMouseX = newX;
         lastMouseY = newY;
     }
@@ -50,9 +50,9 @@ function handleKeyDown(event) {
         camera.direction = 0;
         camera.height = 0;
     }
-
-    if (camera.canMove) {
-        switch (event.keyCode) {
+    
+    if ( camera.canMove ) {
+        switch ( event.keyCode ) {
             case 37: // left
                 camera.x = camera.x + 1;
                 reinitCameraOrientation();
@@ -81,7 +81,7 @@ function handleKeyDown(event) {
                 break;
         }
     }
-    switch (event.keyCode) {
+    switch ( event.keyCode ) {
         case 33: // pageUp
             camera.height -= degToRad(1);
             break;
@@ -115,7 +115,7 @@ var isTurning = true;
 var mouseControl = false;
 
 function handleClick(checkMesh) {
-    switch (checkMesh.value) {
+    switch ( checkMesh.value ) {
         case 'lightOn':
             lightingOn = checkMesh.checked;
             document.getElementById("ambiantLight").checked = checkMesh.checked;
@@ -124,9 +124,9 @@ function handleClick(checkMesh) {
             ambiantLightOn = checkMesh.checked;
             break;
         case 'earthOn':
-            for (var i = 0; i < sun.children.length; i++) {
-                if (sun.children[i].texture == earthTexture) {
-                    sun.children[i].show = checkMesh.checked;
+            for ( var i = 0 ; i < sun.children.length ; i++ ) {
+                if ( sun.children[ i ].texture == earthTexture ) {
+                    sun.children[ i ].show = checkMesh.checked;
                 }
             }
             break;

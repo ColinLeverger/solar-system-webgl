@@ -17,56 +17,56 @@ function initTextures() {
         handleLoadedTexture(sunTexture)
     };
     sunTexture.image.src = "./img/sun.jpg";
-
+    
     earthTexture = gl.createTexture();
     earthTexture.image = new Image();
     earthTexture.image.onload = function () {
         handleLoadedTexture(earthTexture)
     };
     earthTexture.image.src = "./img/earth.jpg";
-
+    
     moonTexture = gl.createTexture();
     moonTexture.image = new Image();
     moonTexture.image.onload = function () {
         handleLoadedTexture(moonTexture)
     };
     moonTexture.image.src = "./img/moon.jpg";
-
+    
     saturneTexture = gl.createTexture();
     saturneTexture.image = new Image();
     saturneTexture.image.onload = function () {
         handleLoadedTexture(saturneTexture)
     };
     saturneTexture.image.src = "./img/saturne.png";
-
+    
     jupiterTexture = gl.createTexture();
     jupiterTexture.image = new Image();
     jupiterTexture.image.onload = function () {
         handleLoadedTexture(jupiterTexture)
     };
     jupiterTexture.image.src = "./img/jupiter.jpg";
-
+    
     marsTexture = gl.createTexture();
     marsTexture.image = new Image();
     marsTexture.image.onload = function () {
         handleLoadedTexture(marsTexture)
     };
     marsTexture.image.src = "./img/mars.jpg";
-
+    
     mercureTexture = gl.createTexture();
     mercureTexture.image = new Image();
     mercureTexture.image.onload = function () {
         handleLoadedTexture(mercureTexture)
     };
     mercureTexture.image.src = "./img/mercure.jpg";
-
+    
     venusTexture = gl.createTexture();
     venusTexture.image = new Image();
     venusTexture.image.onload = function () {
         handleLoadedTexture(venusTexture)
     };
     venusTexture.image.src = "./img/venus.jpg";
-
+    
     worldTexture = gl.createTexture();
     worldTexture.image = new Image();
     worldTexture.image.onload = function () {
