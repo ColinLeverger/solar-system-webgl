@@ -11,7 +11,6 @@ function initWorldObjects() {
     sun.texture = sunTexture;
     sun.lightSource = true;
     sun.selfRotationSpeed = 0.0001;
-    sun.scale([ 3, 3, 3 ]);
     
     // ---------------------------------------- MERCURE
     var mercure = new sphere(sun);
@@ -19,7 +18,7 @@ function initWorldObjects() {
     mercure.rotationDirection = 1;
     mercure.rotationSpeed = 0.00088; // Rotation autour du parent
     mercure.selfRotationSpeed = 0.00058;
-    mercure.translate([ 0, 0, 8 ]); // Distance au soleil
+    mercure.translate([ 0, 0, 15 ]); // Distance au soleil
     mercure.scale([ 0.2, 0.2, 0.2 ]); // Taille
     
     // ---------------------------------------- VENUS
@@ -28,7 +27,7 @@ function initWorldObjects() {
     venus.rotationDirection = 1;
     venus.rotationSpeed = 0.00025;
     venus.selfRotationSpeed = 0.000243;
-    venus.translate([ 0, 0, 10 ]);
+    venus.translate([ 0, 0, 12 ]);
     venus.scale([ 0.3, 0.3, 0.3 ]);
     
     // ---------------------------------------- EARTH
@@ -54,7 +53,7 @@ function initWorldObjects() {
     mars.rotationDirection = 1;
     mars.selfRotationSpeed = 0.0005;
     mars.rotationSpeed = 0.0004;
-    mars.translate([ 0, 0, 13 ]);
+    mars.translate([ 0, 0, 20 ]);
     mars.scale([ 0.2, 0.2, 0.2 ]);
     
     // ---------------------------------------- JUPITER
@@ -63,7 +62,7 @@ function initWorldObjects() {
     jupiter.rotationDirection = 1;
     jupiter.selfRotationSpeed = 0.0007;
     jupiter.rotationSpeed = 0.0003;
-    jupiter.translate([ 0, 0, 7 ]);
+    jupiter.translate([ 0, 0, 25 ]);
     jupiter.scale([ 0.7, 0.7, 0.7 ]);
     
     // ---------------------------------------- SATURNE
@@ -72,7 +71,7 @@ function initWorldObjects() {
     saturne.rotationDirection = 1;
     saturne.selfRotationSpeed = 0.0005;
     saturne.rotationSpeed = 0.0001;
-    saturne.translate([ 0, 0, 13 ]);
+    saturne.translate([ 0, 0, 30 ]);
     saturne.scale([ 0.5, 0.5, 0.5 ]);
     
     return sun;
